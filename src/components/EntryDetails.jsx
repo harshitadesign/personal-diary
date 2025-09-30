@@ -4,7 +4,7 @@ function EntryDetails({ entry }) {
       <img
         src={entry.image}
         alt={entry.title}
-        className="w-full h-48 object-cover rounded"
+        className="w-48 h-48 object-cover rounded"
       />
       <h2 className="text-2xl font-bold mt-2">{entry.title}</h2>
       <p className="text-sm text-gray-500">{entry.date}</p>

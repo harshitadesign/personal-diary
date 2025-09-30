@@ -14,9 +14,8 @@ function EntryForm({ onAdd, onClose, existingEntries }) {
       return;
     }
 
-    // One entry per day check
     if (existingEntries.some((entry) => entry.date === date)) {
-      alert("You already added an entry for this day. Try again tomorrow!");
+      alert("You already added an entry today. Try again tomorrow!");
       return;
     }
 
@@ -25,39 +24,44 @@ function EntryForm({ onAdd, onClose, existingEntries }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-      <input
-        className="border p-2 rounded"
+    <form onSubmit={handleSubmit}>
+      <div>
+        <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input
-        className="border p-2 rounded"
+      </div>
+    
+      <div>
+        <input
         type="date"
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <input
-        className="border p-2 rounded"
+      </div>
+      
+      <div>
+         <input
         type="text"
         placeholder="Image URL"
         value={image}
         onChange={(e) => setImage(e.target.value)}
       />
+      </div>
+     
       <textarea
-        className="border p-2 rounded"
-        placeholder="Content"
+        placeholder="Write Something"
         value={content}
         onChange={(e) => setContent(e.target.value)}
       ></textarea>
 
       <div className="flex justify-end gap-2 mt-2">
-        <button type="button" onClick={onClose} className="px-3 py-1 border rounded">
+        <button type="button" onClick={onClose}>
           Cancel
         </button>
-        <button type="submit" className="bg-blue-500 text-white px-3 py-1 rounded">
+        <button type="submit">
           Save
         </button>
       </div>

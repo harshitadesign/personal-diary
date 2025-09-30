@@ -5,32 +5,20 @@ import AddEntryModal from "./components/AddEntryModal";
 import ViewEntryModal from "./components/ViewEntryModal";
 
 function App() {
-  // All diary entries
   const [entries, setEntries] = useState([]);
-  // For viewing a single entry
   const [selectedEntry, setSelectedEntry] = useState(null);
-  // Modal flags
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
 
-  // Load entries from localStorage on first render
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("entries")) || [];
-    // Sort newest-first
-    saved.sort((a, b) => new Date(b.date) - new Date(a.date));
-    setEntries(saved);
   }, []);
-
-  // Save entries to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("entries", JSON.stringify(entries));
   }, [entries]);
 
-  // Add new entry
   const handleAddEntry = (entry) => {
-    const updated = [entry, ...entries].sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
-    );
+    const updated = [entry, ...entries].sort((a, b) => new Date(b.date) - new Date(a.date) );
     setEntries(updated);
   };
 
